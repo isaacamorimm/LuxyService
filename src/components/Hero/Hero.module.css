@@ -1,0 +1,122 @@
+.hero {
+  position: relative;
+  background-color: #f8fafc;
+  overflow: hidden;
+  min-height: calc(100vh - 5rem);
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.blobPrimary {
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(47, 0, 105, 0.05);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(252, 76, 4, 0.1);
+  color: #FC4C04;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .title { font-size: 3.5rem; }
+}
+
+.titleHighlight { color: #2F0069; }
+
+.description {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 35rem;
+}
+
+.buttonGroup { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.btnPrimary {
+  background-color: #2F0069;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary:hover { background-color: #1a003b; }
+
+.btnSecondary {
+  background-color: white;
+  color: #4b5563;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid #d1d5db;
+}
+
+.btnSecondary:hover { border-color: #2F0069; color: #2F0069; }
+
+/* Imagem da Empresa */
+.imageWrapper {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top right, rgba(47,0,105,0.4), transparent);
+}

@@ -1,0 +1,138 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
+import styles from './contactSection.module.css';
+
+const contactSchema = z.object({
+    name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
+    email: z.string().email({ message: "Insira um e-mail válido" }),
+    phone: z.string().min(8, { message: "Telefone inválido" }),
+    service: z.enum(["cftv", "solar", "automacao", "redes", "outro"], {
+        errorMap: () => ({ message: "Selecione um tipo de serviço" }),
+    }),
+    message: z.string().min(10, { message: "A mensagem deve ter pelo menos 10 caracteres" }),
+});
+
+export const ContactSection = () => {
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
+        resolver: zodResolver(contactSchema),
+    });
+
+    const onSubmit = async (data) => {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.log("Form Data:", data);
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 5000);
+    };
+
+    return (
+        <section id="contact" className={styles.section}>
+            <div className={styles.container}>
+                {/* Textos e Informações */}
+                <div>
+                    <span className={styles.badge}>Fale Conosco</span>
+                    <h2 className={styles.title}>Vamos tirar seu projeto do papel?</h2>
+                    <p className={styles.description}>
+                        Preencha o formulário e nossa equipe de engenharia entrará em contato para entender suas necessidades e apresentar a melhor solução.
+                    </p>
+
+                    <div className={styles.infoGroup}>
+                        <div className={styles.infoItem}>
+                            <div className={styles.iconPhone}><Phone size={24} /></div>
+                            <div>
+                                <h4 className={styles.infoTitle}>Telefone / WhatsApp</h4>
+                                <p className={styles.infoText}>0800 704 2767</p>
+                                <p className={styles.infoSubtext}>(11) 99999-9999</p>
+                            </div>
+                        </div>
+
+                        <div className={styles.infoItem}>
+                            <div className={styles.iconMail}><Mail size={24} /></div>
+                            <div>
+                                <h4 className={styles.infoTitle}>E-mail</h4>
+                                <p className={styles.infoText}>contato@luxyservice.com.br</p>
+                                <p className={styles.infoSubtext}>comercial@luxyservice.com.br</p>
+                            </div>
+                        </div>
+
+                        <div className={styles.infoItem}>
+                            <div className={styles.iconMap}><MapPin size={24} /></div>
+                            <div>
+                                <h4 className={styles.infoTitle}>Visite-nos</h4>
+                                <p className={styles.infoText}>Av. Paulista, 1000 - Bela Vista</p>
+                                <p className={styles.infoSubtext}>São Paulo - SP, 01310-100</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Formulário */}
+                <div className={styles.formCard}>
+                    {isSuccess && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+                            className={styles.successOverlay}
+                        >
+                            <div className={styles.successIcon}><CheckCircle size={32} /></div>
+                            <h3 className={styles.title} style={{fontSize: '1.5rem'}}>Mensagem Enviada!</h3>
+                            <p className={styles.description}>Obrigado pelo contato. Retornaremos em breve.</p>
+                        </motion.div>
+                    )}
+
+                    <h3 className={styles.formTitle}>Envie uma mensagem</h3>
+
+                    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                        <div className={styles.formRow}>
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="name" className={styles.label}>Nome Completo</label>
+                                <input id="name" {...register("name")} className={styles.input} placeholder="Seu nome" />
+                                {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+                            </div>
+
+                            <div className={styles.inputGroup}>
+                                <label htmlFor="phone" className={styles.label}>Telefone / Celular</label>
+                                <input id="phone" {...register("phone")} className={styles.input} placeholder="(00) 00000-0000" />
+                                {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
+                            </div>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="email" className={styles.label}>E-mail Corporativo</label>
+                            <input id="email" type="email" {...register("email")} className={styles.input} placeholder="nome@empresa.com.br" />
+                            {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="service" className={styles.label}>Interesse</label>
+                            <select id="service" {...register("service")} className={styles.input}>
+                                <option value="">Selecione um serviço...</option>
+                                <option value="cftv">Segurança Eletrônica (CFTV)</option>
+                                <option value="solar">Energia Solar</option>
+                                <option value="automacao">Automação</option>
+                                <option value="redes">Infraestrutura de Redes</option>
+                                <option value="outro">Outro Assunto</option>
+                            </select>
+                            {errors.service && <p className={styles.error}>{errors.service.message}</p>}
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="message" className={styles.label}>Mensagem</label>
+                            <textarea id="message" rows={4} {...register("message")} className={styles.input} placeholder="Descreva brevemente seu projeto..." />
+                            {errors.message && <p className={styles.error}>{errors.message.message}</p>}
+                        </div>
+
+                        <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
+                            {isSubmitting ? (<><Loader2 className={styles.spin} size={20} /> Enviando...</>) : (<>Enviar Mensagem <Send size={20} /></>)}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    );
+};

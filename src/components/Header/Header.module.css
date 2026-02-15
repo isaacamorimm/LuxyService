@@ -1,0 +1,144 @@
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3f4f6;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- LOGO --- */
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #2F0069;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.logoHighlight {
+  color: #FC4C04;
+}
+
+.iconTilt {
+  transform: rotate(-10deg);
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+/* --- LINKS DE NAVEGAÇÃO DESKTOP (Com animação de underline) --- */
+.navLink {
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLink:hover {
+  color: #000000;
+}
+
+/* --- BOTÃO FALE CONOSCO --- */
+.ctaButton {
+  background-color: transparent;
+  color: #000000;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.ctaButton:hover {
+  border-color: #2F0069;
+  color: #2F0069;
+  background-color: rgba(47, 0, 105, 0.03);
+}
+
+/* --- MENU MOBILE --- */
+.mobileMenuBtn {
+  display: block;
+  background: none;
+  border: none;
+  color: #2F0069;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobileMenuBtn {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 1.5rem;
+  gap: 1.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+.mobileNavLink {
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  text-decoration: underline;
+}

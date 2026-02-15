@@ -1,0 +1,84 @@
+.footer {
+  background-color: #2F0069;
+  color: #ffffff;
+  padding: 4rem 0 2rem;
+  font-size: 0.875rem;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.columnTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ffffff; /* Era #FC4C04, agora ficou branco para ficar mais clean */
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #FC4C04;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d1d5db;
+}
+
+.socialSection {
+  margin-top: 1.5rem;
+}
+
+.socialTitle {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  color: #d1d5db;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon:hover {
+  color: #FC4C04;
+}
+
+.bottom {
+  border-top: 1px solid #374151;
+  padding-top: 2rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
