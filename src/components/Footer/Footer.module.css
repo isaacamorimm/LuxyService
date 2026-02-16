@@ -1,64 +1,113 @@
 .footer {
-  background-color: #2F0069;
-  color: #ffffff;
-  padding: 4rem 0 2rem;
+  background-color: #2F0069; /* Fundo super escuro igual ao Hero */
+  color: #9ca3af;
+  padding: 6rem 0 2rem;
   font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(47, 0, 105, 0.3);
+}
+
+/* Grade tecnológica muito subtil no fundo */
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .container {
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4rem;
+  margin-bottom: 4rem;
 }
 
+/* --- LOGO NO FOOTER --- */
+.brand {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.logoHighlight {
+  color: #FC4C04;
+}
+
+.iconTilt {
+  transform: rotate(-10deg);
+}
+
+.brandDesc {
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 20rem;
+}
+
+/* --- LINKS E COLUNAS --- */
 .columnTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #ffffff; /* Era #FC4C04, agora ficou branco para ficar mais clean */
+  color: #ffffff; /* Títulos em branco (sóbrio e limpo) */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .link {
-  color: #d1d5db;
+  color: #9ca3af;
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .link:hover {
-  color: #FC4C04;
+  color: #ffffff;
+  transform: translateX(4px); /* Desliza ligeiramente para a direita ao passar o rato */
 }
 
 .contactItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #d1d5db;
+  gap: 0.75rem;
+  color: #9ca3af;
 }
 
+/* --- REDES SOCIAIS --- */
 .socialSection {
-  margin-top: 1.5rem;
-}
-
-.socialTitle {
-  font-size: 0.875rem;
-  margin-bottom: 0.75rem;
-  color: #ffffff;
+  margin-top: 2rem;
 }
 
 .socialIcons {
@@ -66,19 +115,41 @@
   gap: 1rem;
 }
 
-.icon {
-  color: #d1d5db;
-  transition: color 0.2s ease-in-out;
-}
-
-.icon:hover {
-  color: #FC4C04;
-}
-
-.bottom {
-  border-top: 1px solid #374151;
-  padding-top: 2rem;
-  text-align: center;
+.iconWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #9ca3af;
-  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.iconWrapper:hover {
+  background-color: rgba(252, 76, 4, 0.1);
+  border-color: rgba(252, 76, 4, 0.3);
+  color: #FC4C04; /* O único ponto que ganha cor no hover do footer */
+  transform: translateY(-3px);
+}
+
+/* --- BARRA INFERIOR --- */
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .bottom {
+    flex-direction: row;
+  }
 }

@@ -1,8 +1,21 @@
 .section {
-  padding: 6rem 0;
+  padding: 8rem 0;
   background-color: #ffffff;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Grade leve no fundo branco */
+.gridOverlayLight {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .container {
@@ -11,115 +24,163 @@
   padding: 0 1rem;
   display: grid;
   gap: 4rem;
+  position: relative;
+  z-index: 10;
 }
 
 @media (min-width: 1024px) {
   .container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
   }
 }
 
+/* Tipografia Tech - Mais sutil com foco no Roxo */
 .badge {
-  color: #FC4C04;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(47, 0, 105, 0.05); /* Fundo roxinho claro */
+  border: 1px solid rgba(47, 0, 105, 0.15); /* Borda roxa leve */
+  color: #2F0069; /* Texto roxo */
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+}
+
+.badgeIcon {
+  width: 8px;
+  height: 8px;
+  background-color: #2F0069; /* Apenas o pontinho fica laranja como "indicador ativo" */
+  border-radius: 50%;
 }
 
 .title {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 900;
   color: #111827;
-  margin: 0.5rem 0 1.5rem 0;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.highlight {
+  color: #FC4C04; /* O único destaque grande em laranja na seção */
 }
 
 .description {
   color: #4b5563;
   font-size: 1.125rem;
-  line-height: 1.625;
-  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  font-weight: 500;
 }
 
-.infoGroup {
+/* Ícones de Contato */
+.infoGroup { display: flex; flex-direction: column; gap: 2rem; }
+.infoItem { display: flex; align-items: flex-start; gap: 1rem; }
+
+.iconWrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #2F0069;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.infoItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+.infoItem:hover .iconWrapper {
+  border-color: #2F0069;
+  background-color: rgba(47, 0, 105, 0.05);
+  transform: scale(1.05);
 }
 
-.iconPhone { width: 3rem; height: 3rem; background-color: rgba(47, 0, 105, 0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: #2F0069; flex-shrink: 0; }
-.iconMail { width: 3rem; height: 3rem; background-color: rgba(252, 76, 4, 0.1); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: #FC4C04; flex-shrink: 0; }
-.iconMap { width: 3rem; height: 3rem; background-color: #f3f4f6; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: #4b5563; flex-shrink: 0; }
-
-.infoTitle { font-weight: 700; color: #111827; margin: 0 0 0.25rem 0; }
-.infoText { color: #4b5563; margin: 0; }
+.infoTitle { font-weight: 800; color: #111827; margin: 0 0 0.25rem 0; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em; }
+.infoText { color: #4b5563; margin: 0; font-weight: 500; }
 .infoSubtext { color: #6b7280; font-size: 0.875rem; margin: 0; }
 
+/* Formulário Tech */
 .formCard {
   background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
   position: relative;
 }
 
 .formTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: #111827;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
-.form { display: flex; flex-direction: column; gap: 1rem; }
-.formRow { display: grid; gap: 1rem; }
+.form { display: flex; flex-direction: column; gap: 1.5rem; }
+.formRow { display: grid; gap: 1.5rem; }
 @media (min-width: 768px) { .formRow { grid-template-columns: 1fr 1fr; } }
 
 .inputGroup { display: flex; flex-direction: column; gap: 0.5rem; }
-.label { font-size: 0.875rem; font-weight: 500; color: #374151; }
+.label { font-size: 0.75rem; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em; }
 
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.25rem;
   border: 1px solid #e5e7eb;
+  background-color: #f8fafc;
   outline: none;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   font-family: inherit;
   box-sizing: border-box;
 }
 
+/* Foco do input agora é Roxo em vez de Laranja */
 .input:focus {
   border-color: #2F0069;
-  box-shadow: 0 0 0 2px rgba(47, 0, 105, 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(47, 0, 105, 0.1);
 }
 
-.error { color: #ef4444; font-size: 0.75rem; margin-top: 0.25rem; }
+.error { color: #ef4444; font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; }
 
+/* Botão principal agora é Roxo */
 .submitBtn {
   width: 100%;
-  background-color: #2F0069;
+  background-color: #2F0069; 
   color: #ffffff;
-  font-weight: 700;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
-.submitBtn:hover { background-color: #1a003b; }
-.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+.submitBtn:hover { 
+  background-color: #1a003b; /* Roxo mais escuro no hover */
+  box-shadow: 0 10px 20px -5px rgba(47, 0, 105, 0.3);
+  transform: translateY(-2px);
+}
+.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; box-shadow: none; }
 
 .spin { animation: spin 1s linear infinite; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -128,24 +189,24 @@
   position: absolute;
   inset: 0;
   background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(4px);
-  z-index: 10;
+  backdrop-filter: blur(8px);
+  z-index: 20;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .successIcon {
-  width: 4rem;
-  height: 4rem;
-  background-color: #dcfce7;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(22, 163, 74, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #16a34a;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }

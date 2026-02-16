@@ -33,59 +33,75 @@ export const ContactSection = () => {
 
     return (
         <section id="contact" className={styles.section}>
+            <div className={styles.gridOverlayLight} />
+            
             <div className={styles.container}>
-                {/* Textos e Informações */}
-                <div>
-                    <span className={styles.badge}>Fale Conosco</span>
-                    <h2 className={styles.title}>Vamos tirar seu projeto do papel?</h2>
+                {/* Lado Esquerdo - Textos e Informações (Animado) */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    <div className={styles.badge}>
+                        <div className={styles.badgeIcon} /> Comunicação Ativa
+                    </div>
+                    <h2 className={styles.title}>Inicie o seu <br/><span className={styles.highlight}>Projeto.</span></h2>
                     <p className={styles.description}>
-                        Preencha o formulário e nossa equipe de engenharia entrará em contato para entender suas necessidades e apresentar a melhor solução.
+                        A nossa equipa de engenharia está pronta para analisar a sua infraestrutura e desenhar a solução tecnológica mais eficiente para o seu negócio.
                     </p>
 
                     <div className={styles.infoGroup}>
                         <div className={styles.infoItem}>
-                            <div className={styles.iconPhone}><Phone size={24} /></div>
+                            <div className={styles.iconWrapper}><Phone size={24} strokeWidth={1.5} /></div>
                             <div>
-                                <h4 className={styles.infoTitle}>Telefone / WhatsApp</h4>
+                                <h4 className={styles.infoTitle}>Linha Direta</h4>
                                 <p className={styles.infoText}>0800 704 2767</p>
                                 <p className={styles.infoSubtext}>(11) 99999-9999</p>
                             </div>
                         </div>
 
                         <div className={styles.infoItem}>
-                            <div className={styles.iconMail}><Mail size={24} /></div>
+                            <div className={styles.iconWrapper}><Mail size={24} strokeWidth={1.5} /></div>
                             <div>
-                                <h4 className={styles.infoTitle}>E-mail</h4>
+                                <h4 className={styles.infoTitle}>Correio Eletrónico</h4>
                                 <p className={styles.infoText}>contato@luxyservice.com.br</p>
                                 <p className={styles.infoSubtext}>comercial@luxyservice.com.br</p>
                             </div>
                         </div>
 
                         <div className={styles.infoItem}>
-                            <div className={styles.iconMap}><MapPin size={24} /></div>
+                            <div className={styles.iconWrapper}><MapPin size={24} strokeWidth={1.5} /></div>
                             <div>
-                                <h4 className={styles.infoTitle}>Visite-nos</h4>
+                                <h4 className={styles.infoTitle}>Sede Operacional</h4>
                                 <p className={styles.infoText}>Av. Paulista, 1000 - Bela Vista</p>
                                 <p className={styles.infoSubtext}>São Paulo - SP, 01310-100</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Formulário */}
-                <div className={styles.formCard}>
+                {/* Lado Direito - Formulário (Animado) */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className={styles.formCard}
+                >
                     {isSuccess && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, scale: 0.9 }} 
+                            animate={{ opacity: 1, scale: 1 }}
                             className={styles.successOverlay}
                         >
-                            <div className={styles.successIcon}><CheckCircle size={32} /></div>
-                            <h3 className={styles.title} style={{fontSize: '1.5rem'}}>Mensagem Enviada!</h3>
-                            <p className={styles.description}>Obrigado pelo contato. Retornaremos em breve.</p>
+                            <div className={styles.successIcon}><CheckCircle size={40} /></div>
+                            <h3 className={styles.title} style={{fontSize: '1.5rem', marginBottom: '0.5rem'}}>Transmissão Concluída</h3>
+                            <p className={styles.description} style={{marginBottom: 0}}>Recebemos os seus dados. Um especialista entrará em contacto em breve.</p>
                         </motion.div>
                     )}
 
-                    <h3 className={styles.formTitle}>Envie uma mensagem</h3>
+                    <h3 className={styles.formTitle}>Formulário de Contacto</h3>
 
                     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                         <div className={styles.formRow}>
@@ -109,12 +125,12 @@ export const ContactSection = () => {
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label htmlFor="service" className={styles.label}>Interesse</label>
+                            <label htmlFor="service" className={styles.label}>Sistema de Interesse</label>
                             <select id="service" {...register("service")} className={styles.input}>
-                                <option value="">Selecione um serviço...</option>
+                                <option value="">Selecione uma opção...</option>
                                 <option value="cftv">Segurança Eletrônica (CFTV)</option>
                                 <option value="solar">Energia Solar</option>
-                                <option value="automacao">Automação</option>
+                                <option value="automacao">Automação Predial</option>
                                 <option value="redes">Infraestrutura de Redes</option>
                                 <option value="outro">Outro Assunto</option>
                             </select>
@@ -122,16 +138,16 @@ export const ContactSection = () => {
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label htmlFor="message" className={styles.label}>Mensagem</label>
-                            <textarea id="message" rows={4} {...register("message")} className={styles.input} placeholder="Descreva brevemente seu projeto..." />
+                            <label htmlFor="message" className={styles.label}>Escopo do Projeto</label>
+                            <textarea id="message" rows={4} {...register("message")} className={styles.input} style={{resize: 'none'}} placeholder="Descreva brevemente a sua necessidade..." />
                             {errors.message && <p className={styles.error}>{errors.message.message}</p>}
                         </div>
 
                         <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
-                            {isSubmitting ? (<><Loader2 className={styles.spin} size={20} /> Enviando...</>) : (<>Enviar Mensagem <Send size={20} /></>)}
+                            {isSubmitting ? (<><Loader2 className={styles.spin} size={20} /> Processando...</>) : (<>Enviar Solicitação <Send size={20} /></>)}
                         </button>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

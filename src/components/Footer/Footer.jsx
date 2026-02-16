@@ -1,51 +1,71 @@
-import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import styles from './footer.module.css';
 
 export const Footer = () => {
     return (
         <footer className={styles.footer}>
+            <div className={styles.gridOverlay} />
+            
             <div className={styles.container}>
-                <div className={styles.grid}>
-                    {/* Coluna 1 */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    className={styles.grid}
+                >
+                    {/* Coluna 1 - Marca */}
+                    <div className={styles.brand}>
+                        <a href="#inicio" className={styles.logo}>
+                            <Zap size={24} className={`${styles.logoHighlight} ${styles.iconTilt}`} strokeWidth={2.5} />
+                            Luxy<span className={styles.logoHighlight}>Service</span>
+                        </a>
+                        <p className={styles.brandDesc}>
+                            Engenharia de alta performance para infraestruturas corporativas. Segurança, energia e redes em total sincronia.
+                        </p>
+                    </div>
+
+                    {/* Coluna 2 - Navegação */}
                     <div>
-                        <h4 className={styles.columnTitle}>Luxy Service</h4>
+                        <h4 className={styles.columnTitle}>A Empresa</h4>
                         <ul className={styles.list}>
-                            <li><a href="#" className={styles.link}>Institucional</a></li>
-                            <li><a href="#" className={styles.link}>Trabalhe Conosco</a></li>
+                            <li><a href="#sobre" className={styles.link}>Sobre Nós</a></li>
+                            <li><a href="#portfolio" className={styles.link}>Portfólio de Engenharia</a></li>
+                            <li><a href="/servicos" className={styles.link}>Nossas Soluções</a></li>
                         </ul>
                     </div>
 
-                    {/* Coluna 2 */}
+                    {/* Coluna 3 - Contactos e Redes */}
                     <div>
-                        <h4 className={styles.columnTitle}>Suporte</h4>
+                        <h4 className={styles.columnTitle}>Central de Operações</h4>
                         <ul className={styles.list}>
-                            <li><a href="#" className={styles.link}>Assistência Técnica</a></li>
-                            <li><a href="#" className={styles.link}>Política de Privacidade</a></li>
+                            <li className={styles.contactItem}><Phone size={18} /> 0800 704 2767</li>
+                            <li className={styles.contactItem}><Mail size={18} /> contacto@luxyservice.com.br</li>
                         </ul>
-                    </div>
 
-                    {/* Coluna 3 */}
-                    <div>
-                        <h4 className={styles.columnTitle}>Contato</h4>
-                        <ul className={styles.list}>
-                            <li className={styles.contactItem}><Phone size={16} /> 0800 704 2767</li>
-                            <li className={styles.contactItem}><Mail size={16} /> contato@luxyservice.com.br</li>
-                        </ul>
                         <div className={styles.socialSection}>
-                            <h5 className={styles.socialTitle}>Redes Sociais</h5>
                             <div className={styles.socialIcons}>
-                                <a href="#" className={styles.icon}><Instagram size={20} /></a>
-                                <a href="#" className={styles.icon}><Facebook size={20} /></a>
-                                <a href="#" className={styles.icon}><Youtube size={20} /></a>
-                                <a href="#" className={styles.icon}><Linkedin size={20} /></a>
+                                <a href="#" className={styles.iconWrapper}><Instagram size={18} /></a>
+                                <a href="#" className={styles.iconWrapper}><Linkedin size={18} /></a>
+                                <a href="#" className={styles.iconWrapper}><Youtube size={18} /></a>
+                                <a href="#" className={styles.iconWrapper}><Facebook size={18} /></a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className={styles.bottom}>
-                    <p>© {new Date().getFullYear()} Luxy Service. Cuidando da sua energia. Todos os direitos reservados.</p>
-                </div>
+                {/* Direitos de Autor */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className={styles.bottom}
+                >
+                    <p>© {new Date().getFullYear()} Luxy Service. Todos os direitos reservados.</p>
+                    <p>Desenvolvido para alta performance.</p>
+                </motion.div>
             </div>
         </footer>
     );

@@ -1,23 +1,50 @@
+/* src/components/Hero/hero.module.css */
+
 .hero {
   position: relative;
-  background-color: #f8fafc;
-  overflow: hidden;
-  min-height: calc(100vh - 5rem);
+  background-color: #05000a; /* Fundo super escuro, quase preto, com um leve tom de roxo */
+  min-height: 100vh; /* Ocupa a tela toda */
   display: flex;
   align-items: center;
-  padding: 4rem 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(47, 0, 105, 0.3);
 }
 
-.blobPrimary {
+/* --- Efeito de Grade Tecnológica (Grid) --- */
+.gridOverlay {
   position: absolute;
-  top: -10%;
-  left: -5%;
-  width: 500px;
-  height: 500px;
-  background-color: rgba(47, 0, 105, 0.05);
-  border-radius: 50%;
-  filter: blur(80px);
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 1;
   pointer-events: none;
+}
+
+/* --- Luzes "Neon" borradas no fundo (FIAP style) --- */
+.glowPurple {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(47, 0, 105, 0.4) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.glowOrange {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(252, 76, 4, 0.15) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
 }
 
 .container {
@@ -28,95 +55,150 @@
   gap: 4rem;
   position: relative;
   z-index: 10;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
   }
 }
 
+/* Tipografia Estilo Tech/Cyber */
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background-color: rgba(252, 76, 4, 0.1);
+  border: 1px solid rgba(252, 76, 4, 0.3);
+  backdrop-filter: blur(8px);
   color: #FC4C04;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 2rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em; /* Espaçamento largo no badge */
+  margin-bottom: 2rem;
+}
+
+.badgeIcon {
+  width: 8px;
+  height: 8px;
+  background-color: #FC4C04;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #FC4C04;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #111827;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.04em; /* Espaçamento apertado para dar impacto */
+  text-transform: uppercase; /* FIAP usa muito uppercase em títulos */
 }
 
 @media (min-width: 768px) {
-  .title { font-size: 3.5rem; }
+  .title { font-size: 4.5rem; }
 }
 
-.titleHighlight { color: #2F0069; }
+.titleHighlight {
+  color: transparent;
+  background-image: linear-gradient(90deg, #FC4C04, #FC4C04);
+  background-clip: text;
+  -webkit-background-clip: text;
+  display: block;
+}
 
 .description {
   font-size: 1.125rem;
-  color: #4b5563;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
+  color: #a1a1aa; /* Cinza claro */
+  line-height: 1.7;
+  margin-bottom: 3rem;
   max-width: 35rem;
+  font-weight: 400;
 }
 
-.buttonGroup { display: flex; flex-wrap: wrap; gap: 1rem; }
+.buttonGroup { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 1.5rem; 
+}
 
+/* Botões com estilo Glassmorphism e Neon */
 .btnPrimary {
-  background-color: #2F0069;
+  background-color: #FC4C04;
   color: white;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 0.25rem; /* Bordas mais retas (tech) */
+  font-weight: 700;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s ease;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
 }
 
-.btnPrimary:hover { background-color: #1a003b; }
+.btnPrimary:hover { 
+  background-color: #ff5e1a; 
+  box-shadow: 0 0 30px rgba(252, 76, 4, 0.6);
+  transform: translateY(-2px);
+}
 
 .btnSecondary {
-  background-color: white;
-  color: #4b5563;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 1rem 2.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border: 1px solid #d1d5db;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
 }
 
-.btnSecondary:hover { border-color: #2F0069; color: #2F0069; }
+.btnSecondary:hover { 
+  border-color: #2F0069; 
+  background-color: rgba(47, 0, 105, 0.2); 
+  transform: translateY(-2px);
+}
 
-/* Imagem da Empresa */
-.imageWrapper {
+/* Painel da direita */
+.techPanel {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.codeLine {
+  font-family: monospace;
+  color: #FC4C04;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .image {
   width: 100%;
-  height: auto;
+  height: 350px;
   object-fit: cover;
-  display: block;
+  border-radius: 0.5rem;
+  filter: grayscale(80%) contrast(120%);
+  transition: filter 0.5s ease;
 }
 
-.imageOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top right, rgba(47,0,105,0.4), transparent);
+.techPanel:hover .image {
+  filter: grayscale(0%) contrast(100%);
 }
