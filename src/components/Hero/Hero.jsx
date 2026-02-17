@@ -1,23 +1,9 @@
 import { ArrowRight, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Reveal } from '../Reveal';
 import styles from './Hero.module.css';
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-    }
-};
 
-const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
-    }
-};
 
 export const Hero = () => {
     return (
@@ -27,30 +13,38 @@ export const Hero = () => {
             <div className={styles.glowOrange} />
 
             <div className={styles.container}>
-                <motion.div variants={containerVariants} initial="hidden" animate="visible">
-                    <motion.div variants={itemVariants} className={styles.badge}>
-                        <div className={styles.badgeIcon} />
-                        Sistema Ativo
-                    </motion.div>
+                <div style={{ maxWidth: '600px' }}>
+                    <Reveal>
+                        <div className={styles.badge}>
+                            <div className={styles.badgeIcon} />
+                            Sistema Ativo
+                        </div>
+                    </Reveal>
 
-                    <motion.h1 variants={itemVariants} className={styles.title}>
-                        Engenharia de <br />
-                        <span className={styles.titleHighlight}>Alta Performance.</span>
-                    </motion.h1>
+                    <Reveal delay={0.35}>
+                        <h1 className={styles.title}>
+                            Engenharia de <br />
+                            <span className={styles.titleHighlight}>Alta Performance.</span>
+                        </h1>
+                    </Reveal>
 
-                    <motion.p variants={itemVariants} className={styles.description}>
-                        A Luxy Service desenvolve infraestrutura inteligente. De Segurança IP a Redes Corporativas e Energia Solar, nós desenhamos o futuro da sua operação.
-                    </motion.p>
+                    <Reveal delay={0.45}>
+                        <p className={styles.description}>
+                            A Luxy Service desenvolve infraestrutura inteligente. De Segurança IP a Redes Corporativas e Energia Solar, nós desenhamos o futuro da sua operação.
+                        </p>
+                    </Reveal>
 
-                    <motion.div variants={itemVariants} className={styles.buttonGroup}>
-                        <a href="#contact" className={styles.btnPrimary}>
-                            Iniciar Projeto <ArrowRight size={20} />
-                        </a>
-                        <a href="#portfolio" className={styles.btnSecondary}>
-                            Ver Portfólio
-                        </a>
-                    </motion.div>
-                </motion.div>
+                    <Reveal delay={0.55}>
+                        <div className={styles.buttonGroup}>
+                            <a href="#contact" className={styles.btnPrimary}>
+                                Iniciar Projeto <ArrowRight size={20} />
+                            </a>
+                            <a href="#portfolio" className={styles.btnSecondary}>
+                                Ver Portfólio
+                            </a>
+                        </div>
+                    </Reveal>
+                </div>
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95, rotateY: 10 }}

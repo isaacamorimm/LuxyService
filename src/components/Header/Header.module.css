@@ -123,12 +123,23 @@
 .mobileMenu {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.95);
+  /* Slightly transparent */
+  backdrop-filter: blur(10px);
+  /* Glassmorphism effect */
   border-bottom: 1px solid #f3f4f6;
   padding: 1.5rem;
   gap: 1.25rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+
+  /* OVERLAY POSITIONING */
+  position: absolute;
+  top: 100%;
+  /* Starts right below the header */
+  left: 0;
+  width: 100%;
+  z-index: 49;
 }
 
 @media (min-width: 768px) {
