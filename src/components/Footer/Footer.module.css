@@ -1,6 +1,6 @@
 .footer {
-  background-color: #2F0069; /* Fundo super escuro igual ao Hero */
-  color: #9ca3af;
+  background-color: #2F0069;
+  color: #e5e7eb;
   padding: 6rem 0 2rem;
   font-size: 0.875rem;
   position: relative;
@@ -12,7 +12,7 @@
 .gridOverlay {
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -62,7 +62,7 @@
 }
 
 .brandDesc {
-  color: #6b7280;
+  color: #d1d5db;
   line-height: 1.6;
   max-width: 20rem;
 }
@@ -72,7 +72,7 @@
   font-size: 0.875rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #ffffff; /* Títulos em branco (sóbrio e limpo) */
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -87,7 +87,7 @@
 }
 
 .link {
-  color: #9ca3af;
+  color: #e5e7eb;
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-block;
@@ -95,14 +95,15 @@
 
 .link:hover {
   color: #ffffff;
-  transform: translateX(4px); /* Desliza ligeiramente para a direita ao passar o rato */
+  transform: translateX(4px);
+  /* Desliza ligeiramente para a direita ao passar o rato */
 }
 
 .contactItem {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: #9ca3af;
+  color: #e5e7eb;
 }
 
 /* --- REDES SOCIAIS --- */
@@ -124,14 +125,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #9ca3af;
+  color: #e5e7eb;
   transition: all 0.3s ease;
 }
 
 .iconWrapper:hover {
   background-color: rgba(252, 76, 4, 0.1);
   border-color: rgba(252, 76, 4, 0.3);
-  color: #FC4C04; /* O único ponto que ganha cor no hover do footer */
+  color: #FC4C04;
   transform: translateY(-3px);
 }
 
@@ -144,7 +145,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  color: #6b7280;
+  color: #d1d5db;
   font-size: 0.875rem;
 }
 
