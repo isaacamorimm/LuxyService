@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import styles from './footer.module.css';
+import styles from './Footer.module.css';
 
 export const Footer = () => {
     return (

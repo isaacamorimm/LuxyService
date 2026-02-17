@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
-import styles from './contactSection.module.css';
+import styles from './ContactSection.module.css';
 
 const contactSchema = z.object({
     name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
@@ -34,7 +34,7 @@ export const ContactSection = () => {
     return (
         <section id="contact" className={styles.section}>
             <div className={styles.gridOverlayLight} />
-            
+
             <div className={styles.container}>
                 {/* Lado Esquerdo - Textos e Informações (Animado) */}
                 <motion.div
@@ -46,7 +46,7 @@ export const ContactSection = () => {
                     <div className={styles.badge}>
                         <div className={styles.badgeIcon} /> Comunicação Ativa
                     </div>
-                    <h2 className={styles.title}>Inicie o seu <br/><span className={styles.highlight}>Projeto.</span></h2>
+                    <h2 className={styles.title}>Inicie o seu <br /><span className={styles.highlight}>Projeto.</span></h2>
                     <p className={styles.description}>
                         A nossa equipa de engenharia está pronta para analisar a sua infraestrutura e desenhar a solução tecnológica mais eficiente para o seu negócio.
                     </p>
@@ -82,7 +82,7 @@ export const ContactSection = () => {
                 </motion.div>
 
                 {/* Lado Direito - Formulário (Animado) */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -91,13 +91,13 @@ export const ContactSection = () => {
                 >
                     {isSuccess && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }} 
+                            initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             className={styles.successOverlay}
                         >
                             <div className={styles.successIcon}><CheckCircle size={40} /></div>
-                            <h3 className={styles.title} style={{fontSize: '1.5rem', marginBottom: '0.5rem'}}>Transmissão Concluída</h3>
-                            <p className={styles.description} style={{marginBottom: 0}}>Recebemos os seus dados. Um especialista entrará em contacto em breve.</p>
+                            <h3 className={styles.title} style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Transmissão Concluída</h3>
+                            <p className={styles.description} style={{ marginBottom: 0 }}>Recebemos os seus dados. Um especialista entrará em contacto em breve.</p>
                         </motion.div>
                     )}
 
@@ -139,7 +139,7 @@ export const ContactSection = () => {
 
                         <div className={styles.inputGroup}>
                             <label htmlFor="message" className={styles.label}>Escopo do Projeto</label>
-                            <textarea id="message" rows={4} {...register("message")} className={styles.input} style={{resize: 'none'}} placeholder="Descreva brevemente a sua necessidade..." />
+                            <textarea id="message" rows={4} {...register("message")} className={styles.input} style={{ resize: 'none' }} placeholder="Descreva brevemente a sua necessidade..." />
                             {errors.message && <p className={styles.error}>{errors.message.message}</p>}
                         </div>
 

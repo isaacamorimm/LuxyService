@@ -1,5 +1,5 @@
 import { ShieldCheck, Sun, Wifi, Cpu } from 'lucide-react';
-import styles from './services.module.css';
+import styles from './ServicesSection.module.css';
 
 export const ServicesSection = () => {
     return (
