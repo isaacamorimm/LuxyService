@@ -6,9 +6,9 @@ export const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.gridOverlay} />
-            
+
             <div className={styles.container}>
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
@@ -18,8 +18,7 @@ export const Footer = () => {
                     {/* Coluna 1 - Marca */}
                     <div className={styles.brand}>
                         <a href="#inicio" className={styles.logo}>
-                            <Zap size={24} className={`${styles.logoHighlight} ${styles.iconTilt}`} strokeWidth={2.5} />
-                            Luxy<span className={styles.logoHighlight}>Service</span>
+                            <img src="/luxylogo.png" alt="Luxy Service Logo" className={styles.logoImage} />
                         </a>
                         <p className={styles.brandDesc}>
                             Engenharia de alta performance para infraestruturas corporativas. Segurança, energia e redes em total sincronia.
@@ -56,7 +55,7 @@ export const Footer = () => {
                 </motion.div>
 
                 {/* Direitos de Autor */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}

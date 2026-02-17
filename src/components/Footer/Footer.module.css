@@ -53,6 +53,14 @@
   margin-bottom: 1rem;
 }
 
+.logoImage {
+  height: 3rem;
+  width: auto;
+  object-fit: contain;
+  /* Inverte a cor para branco (ideal para fundo escuro) */
+  filter: brightness(0) invert(1);
+}
+
 .logoHighlight {
   color: #FC4C04;
 }

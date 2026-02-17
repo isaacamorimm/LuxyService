@@ -12,7 +12,7 @@ export const Header = () => {
     const isHome = location.pathname === '/';
 
     return (
-        <motion.header 
+        <motion.header
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -20,8 +20,7 @@ export const Header = () => {
         >
             <div className={styles.container}>
                 <Link to="/" className={styles.logo}>
-                    <Zap size={34} className={`${styles.logoHighlight} ${styles.iconTilt}`} strokeWidth={2.5} />
-                    Luxy<span className={styles.logoHighlight}>Service</span>
+                    <img src="/luxylogo.png" alt="Luxy Service Logo" className={styles.logoImage} />
                 </Link>
 
                 <nav className={styles.desktopNav}>
@@ -48,7 +47,7 @@ export const Header = () => {
 
             <AnimatePresence>
                 {isMobileMenuOpen && (
-                    <motion.div 
+                    <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -68,7 +67,7 @@ export const Header = () => {
                             </>
                         )}
                         <Link to="/servicos" className={styles.mobileNavLink} onClick={toggleMenu}>Serviços</Link>
-                        <a href="#contact" className={styles.ctaButton} style={{textAlign: 'center', marginTop: '0.5rem'}} onClick={toggleMenu}>Fale Conosco</a>
+                        <a href="#contact" className={styles.ctaButton} style={{ textAlign: 'center', marginTop: '0.5rem' }} onClick={toggleMenu}>Fale Conosco</a>
                     </motion.div>
                 )}
             </AnimatePresence>
