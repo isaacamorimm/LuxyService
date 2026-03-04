@@ -10,7 +10,7 @@ const contactSchema = z.object({
     name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
     email: z.string().email({ message: "Insira um e-mail válido" }),
     phone: z.string().min(8, { message: "Telefone inválido" }),
-    service: z.enum(["cftv", "solar", "automacao", "redes", "outro"], {
+    service: z.enum(["predial", "eletrica", "seguranca", "eta", "outro"], {
         errorMap: () => ({ message: "Selecione um tipo de serviço" }),
     }),
     message: z.string().min(10, { message: "A mensagem deve ter pelo menos 10 caracteres" }),
@@ -128,10 +128,10 @@ export const ContactSection = () => {
                             <label htmlFor="service" className={styles.label}>Sistema de Interesse</label>
                             <select id="service" {...register("service")} className={styles.input}>
                                 <option value="">Selecione uma opção...</option>
-                                <option value="cftv">Segurança Eletrônica (CFTV)</option>
-                                <option value="solar">Energia Solar</option>
-                                <option value="automacao">Automação Predial</option>
-                                <option value="redes">Infraestrutura de Redes</option>
+                                <option value="predial">Manutenção Predial e Facilities</option>
+                                <option value="eletrica">Instalação Elétrica e HVAC</option>
+                                <option value="seguranca">Segurança e Controle de Acesso</option>
+                                <option value="eta">Sistemas Prediais e ETA/ETE</option>
                                 <option value="outro">Outro Assunto</option>
                             </select>
                             {errors.service && <p className={styles.error}>{errors.service.message}</p>}
