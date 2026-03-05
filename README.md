@@ -1,16 +1,37 @@
-# React + Vite
+# 🛡️ Luxy Service - Site Institucional Oficial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Repositório oficial do front-end do site corporativo da **Luxy Service**. O projeto foi arquitetado para ser uma Single Page Application (SPA) de alta performance, focada na apresentação de serviços de segurança (CFTV, controle de acesso) e na conversão estruturada de leads comerciais.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Stack Tecnológica
 
-## React Compiler
+O projeto foi construído utilizando as ferramentas mais modernas do ecossistema JavaScript para garantir escalabilidade, performance e facilidade de manutenção:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Core:** [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+* **Roteamento:** [React Router DOM v7](https://reactrouter.com/)
+* **Estilização:** [Tailwind CSS v4](https://tailwindcss.com/) + Utilitários (`clsx`, `tailwind-merge`)
+* **Animações e Micro-interações:** [Framer Motion](https://www.framer.com/motion/) + `tailwindcss-animate`
+* **Gerenciamento de Estado:** [Zustand](https://zustand-demo.pmnd.rs/)
+* **Formulários e Validação:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+* **Requisições HTTP:** [Axios](https://axios-http.com/)
+* **Ícones:** [Lucide React](https://lucide.dev/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Arquitetura e Estrutura de Pastas
+
+O projeto segue uma arquitetura modularizada, separando as responsabilidades de negócio, interface e integração.
+
+```text
+src/
+├── assets/         # Imagens estáticas, SVGs e ícones globais
+├── components/     # Componentes visuais isolados (Header, Footer, Buttons, Cards)
+│   ├── Layout/     # Componentes de estrutura de página
+│   └── ...         # Seções específicas (Hero, ContactSection, ServicesSection)
+├── hooks/          # Hooks customizados do React (ex: useFetch.js)
+├── lib/            # Configurações de bibliotecas de terceiros e utilitários base
+├── pages/          # Componentes de nível de rota (Home, Services, CftvIp)
+├── services/       # Camada de integração com APIs (api.js)
+├── store/          # Gerenciamento de estado global com Zustand (useStore.js)
+└── utils/          # Funções utilitárias puras (cn.js, format.js)
