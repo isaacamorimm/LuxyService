@@ -17,10 +17,10 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="desktop-nav" style={{ display: 'none', md: { display: 'flex' } }}>
           <ul style={{ display: 'flex', gap: '2rem', fontWeight: '500', color: '#333' }}>
-            <li><a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Produtos <ChevronDown size={14} /></a></li>
-            <li><a href="#">Suporte</a></li>
-            <li><a href="#">Soluções</a></li>
-            <li><a href="#">Corporativo</a></li>
+            <li><a href="#inicio" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>Início</a></li>
+            <li><a href="#sobre">Quem Somos</a></li>
+            <li><a href="#servicos">Serviços <ChevronDown size={14} /></a></li>
+            <li><a href="#contact">F.A.Q / Contato</a></li>
           </ul>
         </nav>
 
@@ -53,10 +53,10 @@ const Header = () => {
           zIndex: 100
         }}>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <li><a href="#" style={{ fontWeight: '600', color: '#2F0069' }}>Produtos</a></li>
-            <li><a href="#">Suporte</a></li>
-            <li><a href="#">Soluções</a></li>
-            <li><a href="#">Corporativo</a></li>
+            <li><a href="#inicio" style={{ fontWeight: '600', color: '#2F0069' }}>Início</a></li>
+            <li><a href="#sobre">Quem Somos</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#contact">F.A.Q / Contato</a></li>
           </ul>
         </div>
       )}
