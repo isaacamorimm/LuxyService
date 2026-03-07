@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
 import styles from './AboutSection.module.css';
 
 export const AboutSection = () => {
@@ -32,35 +32,35 @@ export const AboutSection = () => {
                 <div>
                     <Reveal delay={0.2}>
                         <div className={styles.badge}>
-                            <div className={styles.badgeIcon} /> Nossa História
+                            <div className={styles.badgeIcon} /> Quem Somos
                         </div>
                     </Reveal>
 
                     <Reveal delay={0.3}>
-                        <h2 className={styles.title}>Evolução Constante. <br />Integração <span className={styles.highlight}>Total.</span></h2>
+                        <h2 className={styles.title}>Eficiência e <br />Integração <span className={styles.highlight}>Total.</span></h2>
                     </Reveal>
 
                     <Reveal delay={0.4}>
                         <p className={styles.description}>
-                            Nascemos como Luxy Solar, dedicados a transformar a matriz energética de empresas. Com a evolução do mercado, a nossa engenharia acompanhou as necessidades corporativas.
+                            Na <strong>Luxy Service</strong>, acreditamos que a verdadeira eficiência está na integração. Por isso, reunimos múltiplas especialidades sob uma única gestão — garantindo organização, economia e resultados superiores em cada projeto.
                         </p>
                     </Reveal>
 
                     <Reveal delay={0.5}>
                         <p className={styles.description}>
-                            Hoje somos a <strong>Luxy Service</strong>. Uma integradora de tecnologia de ponta focada em CFTV, Redes e Automação IoT, garantindo que o seu negócio opere na sua máxima capacidade técnica.
+                            Nossa missão é oferecer soluções integradas e sustentáveis em energia, manutenção e facilities, com excelência técnica, inovação e compromisso com a eficiência operacional dos nossos clientes.
                         </p>
                     </Reveal>
 
                     <Reveal delay={0.6}>
                         <div className={styles.statsGrid}>
                             <div>
-                                <span className={styles.statNumber}>+500</span>
-                                <span className={styles.statText}>Projetos Integrados</span>
+                                <span className={styles.statNumber}>100%</span>
+                                <span className={styles.statText}>Integração em Facilities</span>
                             </div>
                             <div>
-                                <span className={styles.statNumber}>100%</span>
-                                <span className={styles.statText}>Up-time Garantido</span>
+                                <span className={styles.statNumber}>+Agilidade</span>
+                                <span className={styles.statText}>Suporte Especializado</span>
                             </div>
                         </div>
                     </Reveal>

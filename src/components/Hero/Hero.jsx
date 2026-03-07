@@ -1,6 +1,6 @@
 import { ArrowRight, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
 import styles from './Hero.module.css';
 
 
@@ -17,30 +17,30 @@ export const Hero = () => {
                     <Reveal>
                         <div className={styles.badge}>
                             <div className={styles.badgeIcon} />
-                            Sistema Ativo
+                            Gestão Integrada
                         </div>
                     </Reveal>
 
                     <Reveal delay={0.35}>
                         <h1 className={styles.title}>
-                            Engenharia de <br />
-                            <span className={styles.titleHighlight}>Alta Performance.</span>
+                            Cuidando da sua <br />
+                            <span className={styles.titleHighlight}>Energia & Infraestrutura.</span>
                         </h1>
                     </Reveal>
 
                     <Reveal delay={0.45}>
                         <p className={styles.description}>
-                            A Luxy Service desenvolve infraestrutura inteligente. De Segurança IP a Redes Corporativas e Energia Solar, nós desenhamos o futuro da sua operação.
+                            Da infraestrutura à segurança, a Luxy Service cuida de tudo para o seu prédio, empresa ou condomínio funcionar com excelência e economia.
                         </p>
                     </Reveal>
 
                     <Reveal delay={0.55}>
                         <div className={styles.buttonGroup}>
                             <a href="#contact" className={styles.btnPrimary}>
-                                Iniciar Projeto <ArrowRight size={20} />
+                                Solicite um Orçamento <ArrowRight size={20} />
                             </a>
-                            <a href="#portfolio" className={styles.btnSecondary}>
-                                Ver Portfólio
+                            <a href="#servicos" className={styles.btnSecondary}>
+                                Ver Serviços
                             </a>
                         </div>
                     </Reveal>

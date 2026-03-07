@@ -1,4 +1,5 @@
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
+import { ShieldCheck, Building2, Zap, Factory } from 'lucide-react';
 import styles from './ServicesSection.module.css';
 
 export const ServicesSection = () => {
@@ -15,35 +16,35 @@ export const ServicesSection = () => {
                 </div>
 
                 <div className={styles.grid}>
-                    <Reveal delay={0.4}>
+                    <Reveal delay={0.4} width="100%" height="100%">
+                        <div className={styles.card}>
+                            <div className={styles.iconWrapper}><Building2 size={28} /></div>
+                            <h3 className={styles.cardTitle}>Manutenção Predial e Facilities</h3>
+                            <p className={styles.cardDesc}>Integramos diferentes serviços prediais: elétrica, refrigeração, limpeza e jardinagem com excelência térmica.</p>
+                        </div>
+                    </Reveal>
+
+                    <Reveal delay={0.5} width="100%" height="100%">
+                        <div className={styles.card}>
+                            <div className={styles.iconWrapper}><Zap size={28} /></div>
+                            <h3 className={styles.cardTitle}>Instalação Elétrica e HVAC</h3>
+                            <p className={styles.cardDesc}>Manutenção e instalação elétrica de baixa e média tensão, além de climatização e Ar-Condicionado.</p>
+                        </div>
+                    </Reveal>
+
+                    <Reveal delay={0.6} width="100%" height="100%">
                         <div className={styles.card}>
                             <div className={styles.iconWrapper}><ShieldCheck size={28} /></div>
-                            <h3 className={styles.cardTitle}>Segurança Eletrônica</h3>
-                            <p className={styles.cardDesc}>Projetos de CFTV IP de alta definição, controle de acesso e alarmes inteligentes para máxima proteção corporativa.</p>
+                            <h3 className={styles.cardTitle}>Segurança e Controle de Acesso</h3>
+                            <p className={styles.cardDesc}>Vigilância, projetos de CFTV IP, controle de acesso para portarias e recepções com máxima proteção.</p>
                         </div>
                     </Reveal>
 
-                    <Reveal delay={0.5}>
+                    <Reveal delay={0.7} width="100%" height="100%">
                         <div className={styles.card}>
-                            <div className={styles.iconWrapper}><Sun size={28} /></div>
-                            <h3 className={styles.cardTitle}>Energia Solar</h3>
-                            <p className={styles.cardDesc}>Sistemas fotovoltaicos dimensionados para redução de custos e sustentabilidade energética em larga escala.</p>
-                        </div>
-                    </Reveal>
-
-                    <Reveal delay={0.6}>
-                        <div className={styles.card}>
-                            <div className={styles.iconWrapper}><Wifi size={28} /></div>
-                            <h3 className={styles.cardTitle}>Infraestrutura de Redes</h3>
-                            <p className={styles.cardDesc}>Cabeamento estruturado, fibra óptica e redes Wi-Fi de alta densidade para garantir estabilidade e velocidade.</p>
-                        </div>
-                    </Reveal>
-
-                    <Reveal delay={0.7}>
-                        <div className={styles.card}>
-                            <div className={styles.iconWrapper}><Cpu size={28} /></div>
-                            <h3 className={styles.cardTitle}>Automação IoT</h3>
-                            <p className={styles.cardDesc}>Integração de dispositivos inteligentes para controle de iluminação, climatização e processos industriais.</p>
+                            <div className={styles.iconWrapper}><Factory size={28} /></div>
+                            <h3 className={styles.cardTitle}>Sistemas Prediais e ETA/ETE</h3>
+                            <p className={styles.cardDesc}>Operação e manutenção especializada de Estações de Tratamento de Água e Efluentes.</p>
                         </div>
                     </Reveal>
                 </div>
