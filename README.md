@@ -1,3 +1,8 @@
+	Name:  Luxy Service
+	Author: André Oliveira e Isaac Amorim
+	Date: 07/03/26
+
+
 # 🛡️ Luxy Service - Site Institucional Oficial
 
 Repositório oficial do front-end do site corporativo da **Luxy Service**. O projeto foi arquitetado para ser uma Single Page Application (SPA) de alta performance, focada na apresentação de serviços de segurança (CFTV, controle de acesso, infraestrutura) e na conversão estruturada de leads comerciais.
@@ -60,7 +65,7 @@ Certifique-se de ter o **Node.js** (versão 18+ recomendada) e um gerenciador de
 
 1. Clone o repositório:
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/isaacamorimm/LuxyService
 cd LuxyService
 ```
 
