@@ -41,15 +41,15 @@ export const Footer = () => {
                         <ul className={styles.list}>
                             <li className={styles.contactItem}>
                                 <MapPin size={18} className="shrink-0" /> 
-                                <span>[COLE O ENDEREÇO AQUI, EX: Av. Paulista, 1000 - SP]</span>
+                                <span>Av. Paulista, 1000 - Bela Vista, São Paulo - SP, 01310-100</span>
                             </li>
                             <li className={styles.contactItem}>
                                 <Phone size={18} className="shrink-0" /> 
-                                <span>[COLE O TELEFONE/WHATSAPP AQUI]</span>
+                                <span>(11) 99999-9999</span>
                             </li>
                             <li className={styles.contactItem}>
                                 <Mail size={18} className="shrink-0" /> 
-                                <span>contato@luxyservice.com.br</span>
+                                <span>contato@luxysolar.com.br</span>
                             </li>
                         </ul>
 
