@@ -37,20 +37,31 @@ export const SobreNos = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-white overflow-hidden">
-            
-            {/* 1. Hero Institucional (Com CTA de avanço adicionado) */}
-            <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 bg-gray-900 overflow-hidden text-white flex items-center justify-center min-h-[60vh]">
-                <div className="absolute inset-0">
-                    <img
-                        src="/portfolio/gestao-facilities-luxy.jpg"
-                        alt="Infraestrutura Luxy Service"
-                        className="w-full h-full object-cover"
+
+            {/* 1. Hero Institucional (Fundo Tecnológico Arquitetônico) */}
+            {/* CORREÇÃO: Removido o 'border-b border-white/5' desta section */}
+            <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 bg-[#05000a] text-white flex items-center justify-center min-h-[60vh]">
+
+                {/* Efeitos de Fundo (Grid CSS e Glows importados visualmente da Home) */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {/* Glow Roxo (Topo Esquerda) */}
+                    <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full blur-[100px] z-0" style={{ background: 'radial-gradient(circle, rgba(47, 0, 105, 0.6) 0%, rgba(0,0,0,0) 70%)' }} />
+
+                    {/* Grid Geométrico por cima dos Glows e do fundo */}
+                    <div
+                        className="absolute inset-0 z-10"
+                        style={{
+                            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+                            backgroundSize: '50px 50px'
+                        }}
                     />
-                    <div className="absolute inset-0 bg-gray-900/85 mix-blend-multiply" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+
+                    {/* Degradê na base (mantendo a conexão de transição suave pro fundo branco embaixo) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-20 pointer-events-none" />
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                {/* Camada Frontal de Conteúdo (Z-index 30 para ficar A CIMA do degradê) */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +81,7 @@ export const SobreNos = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
-                            <a 
+                            <a
                                 href="#diferenciais"
                                 className="inline-flex items-center justify-center gap-2 bg-[#FC4C04] hover:bg-[#E03C00] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-[#FC4C04]/30"
                             >
@@ -119,7 +130,7 @@ export const SobreNos = () => {
                                     </div>
                                 ))}
                             </div>
-                            
+
                             <a href="#contato" className="inline-flex items-center gap-2 text-[#FC4C04] font-bold hover:text-[#E03C00] transition-colors group px-4 py-2">
                                 Solicitar Proposta Técnica
                                 <span className="transform group-hover:translate-x-1 transition-transform">
@@ -164,7 +175,8 @@ export const SobreNos = () => {
             </section>
 
             {/* 3. Nossa História (Linha do Tempo focada na Expertise técnica) */}
-            <section className="py-24 bg-gray-50 border-y border-gray-100 overflow-hidden">
+            {/* CORREÇÃO: Removido o 'border-y border-gray-100' desta section */}
+            <section className="py-24 bg-gray-50 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

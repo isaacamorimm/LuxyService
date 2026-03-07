@@ -25,13 +25,8 @@ export const Header = () => {
 
                 <nav className={styles.desktopNav}>
                     <Link to="/" className={styles.navLink}>Início</Link>
-                    <Link to="/sobre" className={styles.navLink}>Sobre Nós</Link>
-                    {isHome ? (
-                        <a href="#portfolio" className={styles.navLink}>Portfólio</a>
-                    ) : (
-                        <Link to="/#portfolio" className={styles.navLink}>Portfólio</Link>
-                    )}
                     <Link to="/servicos" className={styles.navLink}>Serviços</Link>
+                    <Link to="/sobre" className={styles.navLink}>Sobre Nós</Link>           
                     <a href="#contact" className={styles.ctaButton}>Fale Conosco</a>
                 </nav>
 
