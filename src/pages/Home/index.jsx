@@ -4,6 +4,7 @@ import { ServicesSection } from '../../components/ServicesSection/ServicesSectio
 import { PortfolioSection } from '../../components/PortfolioSection/PortfolioSection';
 import { FaqSection } from '../../components/FaqSection/FaqSection';
 import { ContactSection } from '../../components/ContactSection/ContactSection';
+import { Footer } from '../../components/Footer/Footer';
 
 export const Home = () => {
     return (

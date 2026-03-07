@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
 import styles from './AboutSection.module.css';
 
 export const AboutSection = () => {

@@ -1,4 +1,4 @@
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
 import { ShieldCheck, Building2, Zap, Factory } from 'lucide-react';
 import styles from './ServicesSection.module.css';
 

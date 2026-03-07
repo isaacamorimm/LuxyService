@@ -25,16 +25,11 @@ export const Header = () => {
 
                 <nav className={styles.desktopNav}>
                     <Link to="/" className={styles.navLink}>Início</Link>
+                    <Link to="/sobre" className={styles.navLink}>Sobre Nós</Link>
                     {isHome ? (
-                        <>
-                            <a href="#sobre" className={styles.navLink}>Sobre Nós</a>
-                            <a href="#portfolio" className={styles.navLink}>Portfólio</a>
-                        </>
+                        <a href="#portfolio" className={styles.navLink}>Portfólio</a>
                     ) : (
-                        <>
-                            <Link to="/#sobre" className={styles.navLink}>Sobre Nós</Link>
-                            <Link to="/#portfolio" className={styles.navLink}>Portfólio</Link>
-                        </>
+                        <Link to="/#portfolio" className={styles.navLink}>Portfólio</Link>
                     )}
                     <Link to="/servicos" className={styles.navLink}>Serviços</Link>
                     <a href="#contact" className={styles.ctaButton}>Fale Conosco</a>
@@ -55,16 +50,11 @@ export const Header = () => {
                         className={styles.mobileMenu}
                     >
                         <Link to="/" className={styles.mobileNavLink} onClick={toggleMenu}>Início</Link>
+                        <Link to="/sobre" className={styles.mobileNavLink} onClick={toggleMenu}>Sobre Nós</Link>
                         {isHome ? (
-                            <>
-                                <a href="#sobre" className={styles.mobileNavLink} onClick={toggleMenu}>Sobre Nós</a>
-                                <a href="#portfolio" className={styles.mobileNavLink} onClick={toggleMenu}>Portfólio</a>
-                            </>
+                            <a href="#portfolio" className={styles.mobileNavLink} onClick={toggleMenu}>Portfólio</a>
                         ) : (
-                            <>
-                                <Link to="/#sobre" className={styles.mobileNavLink} onClick={toggleMenu}>Sobre Nós</Link>
-                                <Link to="/#portfolio" className={styles.mobileNavLink} onClick={toggleMenu}>Portfólio</Link>
-                            </>
+                            <Link to="/#portfolio" className={styles.mobileNavLink} onClick={toggleMenu}>Portfólio</Link>
                         )}
                         <Link to="/servicos" className={styles.mobileNavLink} onClick={toggleMenu}>Serviços</Link>
                         <a href="#contact" className={styles.ctaButton} style={{ textAlign: 'center', marginTop: '0.5rem' }} onClick={toggleMenu}>Fale Conosco</a>

@@ -1,6 +1,6 @@
 import { ArrowRight, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Reveal } from '../Reveal';
+import { Reveal } from '../Reveal/Reveal';
 import styles from './Hero.module.css';
 
 

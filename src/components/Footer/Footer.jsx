@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, Zap } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './Footer.module.css';
 
@@ -35,16 +35,27 @@ export const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Coluna 3 - Contactos e Redes */}
+                    {/* Coluna 3 - Contatos e Redes */}
                     <div>
                         <h4 className={styles.columnTitle}>Central de Operações</h4>
                         <ul className={styles.list}>
-                            <li className={styles.contactItem}><Phone size={18} /> 0800 704 2767</li>
-                            <li className={styles.contactItem}><Mail size={18} /> contacto@luxyservice.com.br</li>
+                            <li className={styles.contactItem}>
+                                <MapPin size={18} className="shrink-0" /> 
+                                <span>[COLE O ENDEREÇO AQUI, EX: Av. Paulista, 1000 - SP]</span>
+                            </li>
+                            <li className={styles.contactItem}>
+                                <Phone size={18} className="shrink-0" /> 
+                                <span>[COLE O TELEFONE/WHATSAPP AQUI]</span>
+                            </li>
+                            <li className={styles.contactItem}>
+                                <Mail size={18} className="shrink-0" /> 
+                                <span>contato@luxyservice.com.br</span>
+                            </li>
                         </ul>
 
                         <div className={styles.socialSection}>
                             <div className={styles.socialIcons}>
+                                {/* Substitua o "#" pelos links reais do Instagram, LinkedIn, etc. */}
                                 <a href="#" className={styles.iconWrapper}><Instagram size={18} /></a>
                                 <a href="#" className={styles.iconWrapper}><Linkedin size={18} /></a>
                                 <a href="#" className={styles.iconWrapper}><Youtube size={18} /></a>
@@ -54,7 +65,7 @@ export const Footer = () => {
                     </div>
                 </motion.div>
 
-                {/* Direitos de Autor */}
+                {/* Direitos de Autor e CNPJ */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -62,8 +73,10 @@ export const Footer = () => {
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className={styles.bottom}
                 >
-                    <p>© {new Date().getFullYear()} Luxy Service. Todos os direitos reservados.</p>
-                    <p>Desenvolvido para alta performance.</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <p>© {new Date().getFullYear()} Luxy Service. Todos os direitos reservados. | CNPJ: [COLE O CNPJ AQUI]</p>
+                        <p>Desenvolvido para alta performance.</p>
+                    </div>
                 </motion.div>
             </div>
         </footer>
