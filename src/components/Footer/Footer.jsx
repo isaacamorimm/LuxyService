@@ -29,8 +29,8 @@ export const Footer = () => {
                     <div>
                         <h4 className={styles.columnTitle}>A Empresa</h4>
                         <ul className={styles.list}>
-                            <li><a href="#sobre" className={styles.link}>Sobre Nós</a></li>
-                            <li><a href="#portfolio" className={styles.link}>Portfólio de Engenharia</a></li>
+                            <li><a href="/sobre" className={styles.link}>Sobre Nós</a></li>
+                            <li><a href="/portfolio" className={styles.link}>Portfólio de Engenharia</a></li>
                             <li><a href="/servicos" className={styles.link}>Nossas Soluções</a></li>
                         </ul>
                     </div>
