@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { Services } from './pages/Services/Services';
 import { SobreNos } from './pages/SobreNos';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { BagaAssistant } from './components/BagaAssistant/BagaAssistant';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="sobre" element={<SobreNos />} />
         </Route>
       </Routes>
+      <BagaAssistant />
     </BrowserRouter>
   );
 }
