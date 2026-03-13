@@ -1,0 +1,61 @@
+.section { padding: 4rem 0; background-color: #f9fafb; position: relative; overflow: hidden; }
+
+.container { max-width: 80rem; margin: 0 auto; padding: 0 1rem; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;}
+
+.header { text-align: center; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background-color: rgba(252, 76, 4, 0.05); border: 1px solid rgba(252, 76, 4, 0.2);
+  color: #FC4C04; padding: 0.5rem 1.25rem; border-radius: 2rem;
+  font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem;
+}
+.badgeIcon { width: 8px; height: 8px; background-color: #FC4C04; border-radius: 50%; box-shadow: 0 0 8px rgba(252,76,4,0.4); }
+
+.title { font-size: 2.5rem; font-weight: 900; color: #111827; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: -0.03em; line-height: 1.2; text-align: center; max-width: 800px; }
+.highlight { color: #FC4C04; }
+
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
+}
+
+/* Gradient fades on the edges */
+.marqueeContainer::before, .marqueeContainer::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+}
+.marqueeContainer::before { left: 0; background: linear-gradient(to right, #f9fafb, transparent); }
+.marqueeContainer::after { right: 0; background: linear-gradient(to left, #f9fafb, transparent); }
+
+.marqueeContent {
+  display: flex; gap: 6rem; width: max-content;
+  animation: scroll 30s linear infinite;
+  align-items: center;
+}
+
+.clientItem { display: flex; align-items: center; justify-content: center; height: 100px; min-width: 200px; filter: grayscale(100%) opacity(70%); transition: all 0.3s ease; }
+.clientItem:hover { filter: grayscale(0%) opacity(100%); transform: scale(1.05); }
+
+.clientLogo { max-height: 80px; max-width: 180px; object-fit: contain; }
+
+/* Fallback text block in case image isn't loaded */
+.clientFallback {
+  display: none; font-weight: 800; font-size: 1.2rem; color: #111827; text-transform: uppercase; letter-spacing: 0.05em; text-align: center;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 3rem)); }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
+  .clientItem { min-width: 140px; }
+  .marqueeContent { gap: 3rem; }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1.5rem)); }
+  }
+}

@@ -97,11 +97,11 @@ export const ContactSection = () => {
                         >
                             <div className={styles.successIcon}><CheckCircle size={40} /></div>
                             <h3 className={styles.title} style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Transmissão Concluída</h3>
-                            <p className={styles.description} style={{ marginBottom: 0 }}>Recebemos os seus dados. Um especialista entrará em contacto em breve.</p>
+                            <p className={styles.description} style={{ marginBottom: 0 }}>Recebemos os seus dados. Um especialista entrará em contato em breve.</p>
                         </motion.div>
                     )}
 
-                    <h3 className={styles.formTitle}>Formulário de Contacto</h3>
+                    <h3 className={styles.formTitle}>Formulário de Contato</h3>
 
                     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
                         <div className={styles.formRow}>
