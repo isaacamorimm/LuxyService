@@ -16,6 +16,8 @@ export const BagaAssistant = () => {
   
   const recognitionRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const textBeforeDictationRef = useRef('');
+  const isListeningRef = useRef(false); // Ref para manter o estado real da intenção de ouvir
 
   const toggleChat = () => setIsOpen(!isOpen);
   const toggleExpand = () => setIsExpanded(!isExpanded);
@@ -28,71 +30,68 @@ export const BagaAssistant = () => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Inicializa a API de Reconhecimento de Voz (Ditado Robusto)
+  // O estado do Speech Recognition foi movido para fora do useEffect 
+  // para ser instanciado apenas quando o usuário interagir (evita auto-bloqueio do navegador)
+  const getSpeechRecognition = () => {
+    if ('SpeechRecognition' in window) {
+      return new window.SpeechRecognition();
+    } else if ('webkitSpeechRecognition' in window) {
+      return new window.webkitSpeechRecognition();
+    }
+    return null;
+  };
+
   useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      
-      // Configurações para ditado contínuo e mais fluído
-      recognition.continuous = true; 
-      recognition.interimResults = true; 
-      recognition.lang = 'pt-BR';
-      
-      recognition.onresult = (event) => {
-        let interimTranscript = '';
-        let finalTranscript = '';
-
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            finalTranscript += event.results[i][0].transcript;
-          } else {
-            interimTranscript += event.results[i][0].transcript;
-          }
-        }
-        
-        setMessageInput(finalTranscript + interimTranscript);
-      };
-
-      recognition.onend = () => {
-        // Se a API parar sozinha, reflete o estado no UI
-        setIsListening(false);
-      };
-
-      recognition.onerror = (event) => {
-        console.error("Erro no reconhecimento de voz:", event.error);
-        if (event.error !== 'no-speech') {
-           setIsListening(false);
-        }
-      };
-
-      recognitionRef.current = recognition;
-    } else {
+    if (!getSpeechRecognition()) {
       setSpeechSupported(false);
       console.warn("Aviso: O navegador atual não suporta a gravação de voz nativa.");
     }
-
-    return () => {
-      if (recognitionRef.current) {
-        recognitionRef.current.stop();
-      }
-    };
   }, []);
 
   const toggleMicrophone = () => {
-    if (!recognitionRef.current) return;
-
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    } else {
-      setMessageInput(''); 
+    // Se já estiver escutando, para a gravação atual
+    if (isListening && recognitionRef.current) {
       try {
-        recognitionRef.current.start();
-        setIsListening(true);
-      } catch (err) {
-        console.error("Erro ao tentar iniciar o microfone:", err);
+        recognitionRef.current.stop();
+      } catch (e) {}
+      setIsListening(false);
+      return;
+    }
+
+    // Instancia uma NOVA sessão toda vez que for gravar (contorna bugs de "stale state" do Chrome)
+    const SR = getSpeechRecognition();
+    if (!SR) return;
+
+    SR.continuous = false; 
+    SR.interimResults = false; 
+    SR.lang = 'pt-BR';
+    
+    SR.onresult = (event) => {
+      if (event.results && event.results[0] && event.results[0][0]) {
+        const transcript = event.results[0][0].transcript;
+        setMessageInput(prev => prev ? prev + ' ' + transcript : transcript);
       }
+      setIsListening(false);
+    };
+
+    SR.onerror = (event) => {
+      console.error("Erro no reconhecimento de voz na hora de interagir:", event.error);
+      setIsListening(false);
+    };
+
+    SR.onend = () => {
+       setIsListening(false);
+    };
+
+    recognitionRef.current = SR;
+
+    try {
+      recognitionRef.current.start();
+      setIsListening(true);
+    } catch (err) {
+      console.error("Falha rigorosa ao tentar iniciar o microfone:", err);
+      setIsListening(false);
+      alert("O seu navegador barrou a gravação ou o microfone está inacessível. Confira as permissões de site.");
     }
   };
 
@@ -274,9 +273,10 @@ export const BagaAssistant = () => {
             <button 
               onClick={toggleMicrophone}
               type="button"
+              disabled={isListening}
               className={`p-2.5 rounded-full transition-colors shrink-0 flex items-center justify-center pointer-events-auto ${
                 isListening 
-                  ? 'bg-[#FC4C04]/20 text-[#FC4C04] dark:bg-[#FC4C04]/30 dark:text-[#FC4C04] animate-pulse' 
+                  ? 'bg-[#FC4C04]/20 text-[#FC4C04] dark:bg-[#FC4C04]/30 dark:text-[#FC4C04] animate-pulse cursor-not-allowed' 
                   : 'bg-gray-100 text-gray-500 hover:bg-gray-200 dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted/80'
               }`}
               title={isListening ? "A escutar..." : "Falar mensagem"}
