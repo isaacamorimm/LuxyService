@@ -21,7 +21,7 @@ export const ClientsSection = () => {
                             <div className={styles.badgeIcon} /> Nossos Clientes
                         </div>
                         <h2 className={styles.title}>
-                            Empresas que confiam na <span className={styles.highlight}>Luxy Service</span>
+                            Empresas que confiam em nós
                         </h2>
                     </div>
                 </Reveal>
