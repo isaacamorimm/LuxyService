@@ -15,26 +15,31 @@ export const BagaAssistant = () => {
   ]);
   
   const recognitionRef = useRef(null);
-  const messagesEndRef = useRef(null);
+  // Substituímos a ref do final da mensagem pela ref do container inteiro
+  const messagesContainerRef = useRef(null);
 
   const toggleChat = () => setIsOpen(!isOpen);
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
+  // Nova lógica de scroll mais robusta
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Inicializa a API de Reconhecimento de Voz (Ditado Robusto)
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
       
-      // Configurações para ditado contínuo e mais fluído
       recognition.continuous = true; 
       recognition.interimResults = true; 
       recognition.lang = 'pt-BR';
@@ -55,7 +60,6 @@ export const BagaAssistant = () => {
       };
 
       recognition.onend = () => {
-        // Se a API parar sozinha, reflete o estado no UI
         setIsListening(false);
       };
 
@@ -96,43 +100,34 @@ export const BagaAssistant = () => {
     }
   };
 
-  // ==========================================
-  // ENVIO PARA O BACKEND (RAG / PGVECTOR)
-  // ==========================================
   const handleSend = async (textToSend = messageInput) => {
     if (!textToSend.trim()) return;
     
-    // Parar de ouvir ao enviar
     if (isListening && recognitionRef.current) {
       recognitionRef.current.stop();
       setIsListening(false);
     }
 
-    // 1. Adiciona a mensagem do usuário
     const userMsg = { id: Date.now(), sender: 'user', text: textToSend.trim() };
     setMessages(prev => [...prev, userMsg]);
     setMessageInput('');
     setIsTyping(true);
     
     try {
-      /* ----------------------------------------------------
-       * SEU BACKEND AQUI (Integração LLM + RAG + pgvector)
-       * ----------------------------------------------------
-       * Descomente o código abaixo e adicione o URL da sua API
-       * 
-       * const response = await fetch('https://sua-api.com/api/chat', {
-       *   method: 'POST',
-       *   headers: { 'Content-Type': 'application/json' },
-       *   body: JSON.stringify({ message: textToSend.trim() })
-       * });
-       * const data = await response.json();
-       * const botResponseText = data.reply; // Ou a chave correta da sua API
-       */
-
-      // Simulando o tempo de processamento do RAG
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       
-      const botResponseText = "Entendi! Esta interface agora está pronta para receber os dados do seu backend RAG. Para ativar, basta configurar o endpoint no método `handleSend`.";
+      const response = await fetch(`${apiUrl}/ai/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: textToSend.trim() })
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha na resposta do servidor');
+      }
+
+      const data = await response.json();
+      const botResponseText = data?.data?.answer || data?.answer || "Desculpe, a resposta do servidor veio em um formato inesperado.";
       
       const botMsgId = Date.now() + 1;
       setMessages(prev => [...prev, { id: botMsgId, sender: 'bot', text: botResponseText }]);
@@ -217,8 +212,11 @@ export const BagaAssistant = () => {
           </div>
         </div>
 
-        {/* Área de Mensagens */}
-        <div className="flex-1 p-4 overflow-y-auto bg-gray-50/50 dark:bg-muted/20 flex flex-col gap-5 scroll-smooth">
+        {/* Área de Mensagens - ref aplicada aqui e min-h-0 adicionado */}
+        <div 
+          ref={messagesContainerRef}
+          className="flex-1 min-h-0 p-4 overflow-y-auto bg-gray-50/50 dark:bg-muted/20 flex flex-col gap-5 scroll-smooth"
+        >
           {messages.map((msg) => (
             <div key={msg.id} className={`flex items-end gap-2 max-w-[85%] ${msg.sender === 'user' ? 'self-end flex-row-reverse' : ''}`}>
               {msg.sender === 'bot' && (
@@ -252,7 +250,6 @@ export const BagaAssistant = () => {
             </div>
           ))}
 
-          {/* Estado de "Digitando" (Loader) para feedback visual enquanto aguarda RAG/LLM */}
           {isTyping && (
              <div className="flex items-end gap-2 max-w-[85%]">
                <div className="w-8 h-8 rounded-full bg-[#2F0069]/10 flex items-center justify-center shrink-0 mb-1">
@@ -264,8 +261,6 @@ export const BagaAssistant = () => {
                </div>
              </div>
           )}
-          
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Área de Input */}
