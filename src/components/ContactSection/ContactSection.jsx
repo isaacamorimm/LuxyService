@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader2, User } from 'lucide-react';
 import styles from './ContactSection.module.css';
 
 const contactSchema = z.object({
@@ -56,8 +56,8 @@ export const ContactSection = () => {
                             <div className={styles.iconWrapper}><Phone size={24} strokeWidth={1.5} /></div>
                             <div>
                                 <h4 className={styles.infoTitle}>Linha Direta</h4>
-                                <p className={styles.infoText}>0800 704 2767</p>
-                                <p className={styles.infoSubtext}>(11) 99999-9999</p>
+                                <p className={styles.infoText}>(11) 9 9280-1900</p>
+                                <p className={styles.infoSubtext}>Atendimento</p>
                             </div>
                         </div>
 
@@ -65,8 +65,8 @@ export const ContactSection = () => {
                             <div className={styles.iconWrapper}><Mail size={24} strokeWidth={1.5} /></div>
                             <div>
                                 <h4 className={styles.infoTitle}>Correio Eletrónico</h4>
-                                <p className={styles.infoText}>contato@luxyservice.com.br</p>
-                                <p className={styles.infoSubtext}>comercial@luxyservice.com.br</p>
+                                <p className={styles.infoText}>comercial@luxysolar.com.br</p>
+                                <p className={styles.infoSubtext}>contato@luxysolar.com.br</p>
                             </div>
                         </div>
 
@@ -74,8 +74,20 @@ export const ContactSection = () => {
                             <div className={styles.iconWrapper}><MapPin size={24} strokeWidth={1.5} /></div>
                             <div>
                                 <h4 className={styles.infoTitle}>Sede Operacional</h4>
-                                <p className={styles.infoText}>Av. Paulista, 1000 - Bela Vista</p>
-                                <p className={styles.infoSubtext}>São Paulo - SP, 01310-100</p>
+                                <p className={styles.infoText}>Rua Da Rancheira 170, Jardim Santo Antonio</p>
+                                <p className={styles.infoSubtext}>São Paulo - SP, 08032-220</p>
+                            </div>
+                        </div>
+
+                        <div className={styles.infoItem}>
+                            <div className={styles.iconWrapper}><User size={24} strokeWidth={1.5} /></div>
+                            <div>
+                                <h4 className={styles.infoTitle}>Diretoria</h4>
+                                <p className={styles.infoText}>Bruno Gaspar Pessotti</p>
+                                <p className={styles.infoSubtext}>Diretor Técnico • bruno@luxysolar.com.br</p>
+                                <br/>
+                                <p className={styles.infoText}>Luís Carlos L. Mesquita Jr.</p>
+                                <p className={styles.infoSubtext}>Diretor Comercial • luis@luxysolar.com.br</p>
                             </div>
                         </div>
                     </div>
