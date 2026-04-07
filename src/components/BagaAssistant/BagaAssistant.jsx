@@ -16,6 +16,7 @@ export const BagaAssistant = () => {
   
   const recognitionRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const textBeforeDictationRef = useRef('');
   const isListeningRef = useRef(false); // Ref para manter o estado real da intenção de ouvir
 
