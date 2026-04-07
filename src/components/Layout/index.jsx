@@ -7,7 +7,7 @@ export const Layout = () => {
         <div className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
             <Header />
             
-            <main className="flex-grow w-full">
+            <main className="flex-grow w-full pt-20">
                 <Outlet />
             </main>
             
