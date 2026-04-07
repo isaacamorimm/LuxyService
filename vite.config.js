@@ -9,7 +9,13 @@ const __dirname = path.dirname(__filename)
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), Sitemap({hostname: "https://luxyservice.com.br"})],
+  plugins: [react(), Sitemap({hostname: "https://luxyservice.com.br",
+    dynamicRoutes: [
+    '/',
+    '/servicos',
+    '/sobre'
+    ]
+  })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
