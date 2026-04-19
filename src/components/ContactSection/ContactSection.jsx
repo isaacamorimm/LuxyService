@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader2, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2, User, AlertTriangle } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 import styles from './ContactSection.module.css';
+import api from '../../services/api';
 
 const contactSchema = z.object({
     name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
@@ -17,18 +19,39 @@ const contactSchema = z.object({
 });
 
 export const ContactSection = () => {
-    const [isSuccess, setIsSuccess] = useState(false);
+    const [submitError, setSubmitError] = useState(false);
 
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
         resolver: zodResolver(contactSchema),
+        mode: "onBlur"
     });
 
     const onSubmit = async (data) => {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("Form Data:", data);
-        setIsSuccess(true);
-        reset();
-        setTimeout(() => setIsSuccess(false), 5000);
+        setSubmitError(false);
+        try {
+            await api.post('/contact', data);
+            
+            // Dispara o alerta verde flutuante
+            toast.success('Formulário enviado com sucesso! Entraremos em contato.', {
+                duration: 5000,
+                position: 'bottom-right',
+                style: {
+                    background: '#10b981',
+                    color: '#fff',
+                },
+            });
+            
+            reset();
+        } catch (error) {
+            console.error("Erro na comunicação com a API:", error.response?.data || error.message);
+            setSubmitError(true);
+            
+            // Dispara o alerta vermelho flutuante
+            toast.error('Erro ao enviar. Verifique se o servidor está rodando.', {
+                duration: 5000,
+                position: 'bottom-right',
+            });
+        }
     };
 
     return (
@@ -101,21 +124,9 @@ export const ContactSection = () => {
                     transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className={styles.formCard}
                 >
-                    {isSuccess && (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className={styles.successOverlay}
-                        >
-                            <div className={styles.successIcon}><CheckCircle size={40} /></div>
-                            <h3 className={styles.title} style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Transmissão Concluída</h3>
-                            <p className={styles.description} style={{ marginBottom: 0 }}>Recebemos os seus dados. Um especialista entrará em contato em breve.</p>
-                        </motion.div>
-                    )}
-
                     <h3 className={styles.formTitle}>Formulário de Contato</h3>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                    <form onSubmit={handleSubmit(onSubmit)} className={styles.form} noValidate>
                         <div className={styles.formRow}>
                             <div className={styles.inputGroup}>
                                 <label htmlFor="name" className={styles.label}>Nome Completo</label>
@@ -155,12 +166,27 @@ export const ContactSection = () => {
                             {errors.message && <p className={styles.error}>{errors.message.message}</p>}
                         </div>
 
+                        {submitError && (
+                            <motion.div 
+                                initial={{ opacity: 0, y: -10 }} 
+                                animate={{ opacity: 1, y: 0 }}
+                                className={styles.error} 
+                                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', padding: '0.75rem', backgroundColor: '#fee2e2', borderRadius: '0.375rem', color: '#b91c1c' }}
+                            >
+                                <AlertTriangle size={20} />
+                                <span style={{ fontSize: '0.875rem' }}>Erro ao enviar. Verifique se a API está rodando.</span>
+                            </motion.div>
+                        )}
+
                         <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
                             {isSubmitting ? (<><Loader2 className={styles.spin} size={20} /> Processando...</>) : (<>Enviar Solicitação <Send size={20} /></>)}
                         </button>
                     </form>
                 </motion.div>
             </div>
+            
+            {/* O componente Toaster escuta os disparos do toast.success e renderiza na tela */}
+            <Toaster />
         </section>
     );
 };
