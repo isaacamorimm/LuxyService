@@ -15,6 +15,13 @@ export default defineConfig({
     '/sobre'
     ]
   })],
+  server: {
+    host: true,
+    port: 5174,
+    watch: {
+      usePolling: true,
+    }
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
