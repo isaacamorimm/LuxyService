@@ -45,3 +45,4 @@ coverage/
 *.cert
 
 .pnpm-store/
+.aider*
