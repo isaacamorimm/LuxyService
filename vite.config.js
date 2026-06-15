@@ -15,11 +15,12 @@ export default defineConfig({
     '/sobre'
     ]
   })],
-  server: {
+server: {
     host: true,
     port: 5174,
     watch: {
-      usePolling: true,
+      ignored: ['**/node_modules/**', '**/.git/**'],
+      usePolling: false, 
     }
   },
   resolve: {

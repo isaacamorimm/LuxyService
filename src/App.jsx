@@ -8,20 +8,21 @@ import { BagaAssistant } from './components/BagaAssistant/BagaAssistant';
 import { useEffect } from 'react';
 
 function App() {
-  const apiBaseURL = process.env.REACT_APP_API_BASE_URL || '/'; // Use a variável de ambiente ou URL base padrão
+  const apiBaseURL = import.meta.env.VITE_API_URL || '/'; 
 
   useEffect(() => {
     const pingServer = async () => {
       try {
-        await fetch(`${apiBaseURL}ping`, { method: 'GET' });
+        const url = apiBaseURL.endsWith('/') ? apiBaseURL : `${apiBaseURL}/`;
+        await fetch(`${url}ping`, { method: 'GET' });
       } catch (error) {
-        // Trata o erro silenciosamente
         console.error('Erro ao acordar o servidor:', error);
       }
     };
 
     pingServer();
   }, [apiBaseURL]);
+  
 
   return (
     <BrowserRouter>
